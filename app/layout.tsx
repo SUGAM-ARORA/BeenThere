@@ -11,9 +11,11 @@ const inter = Inter({ subsets: ['latin'] });
 const GA_MEASUREMENT_ID = 'G-Z02RGTDL43'; // 🔁 Replace this with your real GA4 ID
 
 export const metadata: Metadata = {
-  title: 'BeenThere - Learn from Those Who\'ve Been There',
-  description: 'Discover authentic career insights from seniors who\'ve been there! Get real interview experiences, preparation tips, and career guidance from those who\'ve walked the path before you.',
-  keywords: 'campus placement, interview preparation, student insights, career guidance, off-campus placement, college experiences, tech interviews, senior advice',
+  title: "BeenThere - Learn from Those Who've Been There",
+  description:
+    "Discover authentic career insights from seniors who've been there! Get real interview experiences, preparation tips, and career guidance from those who've walked the path before you.",
+  keywords:
+    'campus placement, interview preparation, student insights, career guidance, off-campus placement, college experiences, tech interviews, senior advice',
 };
 
 export default function RootLayout({

@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -68,6 +70,7 @@
   "devDependencies": {
     "@types/node": "24.0.0",
     "@types/react": "18.3.23",
+    "prettier": "^3.6.2",
     "typescript": "5.8.3"
   }
 }

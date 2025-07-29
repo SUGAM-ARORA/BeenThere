@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/hooks/use-toast';
 import { ThumbsUp, Share2 } from 'lucide-react';
@@ -11,7 +11,11 @@ interface ClientInsightActionsProps {
   title: string;
 }
 
-export default function ClientInsightActions({ id, initialLikes, title }: ClientInsightActionsProps) {
+export default function ClientInsightActions({
+  id,
+  initialLikes,
+  title,
+}: ClientInsightActionsProps) {
   const [likes, setLikes] = useState(initialLikes);
 
   const handleLike = async () => {
@@ -46,14 +50,24 @@ export default function ClientInsightActions({ id, initialLikes, title }: Client
   return (
     <>
       <span>{likes}</span>
-      <Button onClick={handleLike} variant="outline" size="sm" className="flex items-center gap-2 ml-2">
+      <Button
+        onClick={handleLike}
+        variant="outline"
+        size="sm"
+        className="flex items-center gap-2 ml-2"
+      >
         <ThumbsUp className="w-4 h-4" />
         Like
       </Button>
-      <Button onClick={handleShare} variant="outline" size="sm" className="flex items-center gap-2 ml-2">
+      <Button
+        onClick={handleShare}
+        variant="outline"
+        size="sm"
+        className="flex items-center gap-2 ml-2"
+      >
         <Share2 className="w-4 h-4" />
         Share
       </Button>
     </>
   );
-} 
+}

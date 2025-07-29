@@ -1,0 +1,119 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js build output
+.next/
+out/
+
+# Production build
+build/
+dist/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# Temporary folders
+tmp/
+temp/
+
+# Generated files
+public/sw.js
+public/workbox-*.js
+public/worker-*.js
+public/fallback-*.js
+
+# Database
+*.db
+*.sqlite
+
+# Generated documentation
+docs/
+
+# Ignore specific files that shouldn't be formatted
+CHANGELOG.md
+LICENSE
+*.min.js
+*.min.css
+
+# Ignore auto-generated files
+src/**/*.generated.*
+**/*.d.ts
+
+# Ignore config files that have specific formatting requirements
+tailwind.config.js
+next.config.js
+postcss.config.js

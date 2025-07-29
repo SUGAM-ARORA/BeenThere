@@ -9,8 +9,22 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Eye, EyeOff, LogIn, Users, UserCheck, Loader2, GraduationCap } from 'lucide-react';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import {
+  Eye,
+  EyeOff,
+  LogIn,
+  Users,
+  UserCheck,
+  Loader2,
+  GraduationCap,
+} from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 
 export default function LoginPage() {
@@ -28,7 +42,7 @@ export default function LoginPage() {
 
     try {
       const result = await login({ email, password, userType });
-      
+
       if (result.success) {
         toast({
           title: 'Welcome back!',
@@ -38,7 +52,8 @@ export default function LoginPage() {
       } else {
         toast({
           title: 'Login failed',
-          description: result.error || 'Please check your credentials and try again.',
+          description:
+            result.error || 'Please check your credentials and try again.',
           variant: 'destructive',
         });
       }
@@ -56,7 +71,7 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-blue-950/30 dark:to-purple-950/30">
       <Header />
-      
+
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-md mx-auto">
           <div className="text-center mb-8">
@@ -83,7 +98,12 @@ export default function LoginPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
                   <Label htmlFor="userType">Account Type</Label>
-                  <Select value={userType} onValueChange={(value: 'contributor' | 'viewer') => setUserType(value)}>
+                  <Select
+                    value={userType}
+                    onValueChange={(value: 'contributor' | 'viewer') =>
+                      setUserType(value)
+                    }
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="Select account type" />
                     </SelectTrigger>
@@ -91,13 +111,17 @@ export default function LoginPage() {
                       <SelectItem value="viewer">
                         <div className="flex items-center gap-2">
                           <Users className="w-4 h-4" />
-                          <span>Viewer - Browse experiences and ask questions</span>
+                          <span>
+                            Viewer - Browse experiences and ask questions
+                          </span>
                         </div>
                       </SelectItem>
                       <SelectItem value="contributor">
                         <div className="flex items-center gap-2">
                           <UserCheck className="w-4 h-4" />
-                          <span>Contributor - Share experiences and insights</span>
+                          <span>
+                            Contributor - Share experiences and insights
+                          </span>
                         </div>
                       </SelectItem>
                     </SelectContent>
@@ -110,7 +134,7 @@ export default function LoginPage() {
                     id="email"
                     type="email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={e => setEmail(e.target.value)}
                     placeholder="Enter your email"
                     required
                     className="bg-white/50 dark:bg-slate-800/50"
@@ -124,7 +148,7 @@ export default function LoginPage() {
                       id="password"
                       type={showPassword ? 'text' : 'password'}
                       value={password}
-                      onChange={(e) => setPassword(e.target.value)}
+                      onChange={e => setPassword(e.target.value)}
                       placeholder="Enter your password"
                       required
                       className="bg-white/50 dark:bg-slate-800/50 pr-10"
@@ -186,9 +210,12 @@ export default function LoginPage() {
               </div>
 
               <div className="mt-6 p-4 bg-blue-50/50 dark:bg-blue-900/20 rounded-lg border border-blue-200/50 dark:border-blue-700/50">
-                <p className="text-sm text-blue-700 dark:text-blue-300 font-medium mb-2">Demo Credentials:</p>
+                <p className="text-sm text-blue-700 dark:text-blue-300 font-medium mb-2">
+                  Demo Credentials:
+                </p>
                 <p className="text-xs text-blue-600 dark:text-blue-400">
-                  Admin: admin@beenthere.com / admin123<br />
+                  Admin: admin@beenthere.com / admin123
+                  <br />
                   Any other email works for demo
                 </p>
               </div>

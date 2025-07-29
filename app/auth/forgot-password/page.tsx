@@ -8,7 +8,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Mail, ArrowLeft, Loader2, CheckCircle, GraduationCap } from 'lucide-react';
+import {
+  Mail,
+  ArrowLeft,
+  Loader2,
+  CheckCircle,
+  GraduationCap,
+} from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 
 export default function ForgotPasswordPage() {
@@ -23,7 +29,7 @@ export default function ForgotPasswordPage() {
 
     try {
       const result = await forgotPassword(email);
-      
+
       if (result.success) {
         setEmailSent(true);
         toast({
@@ -33,7 +39,8 @@ export default function ForgotPasswordPage() {
       } else {
         toast({
           title: 'Error',
-          description: result.error || 'Failed to send reset email. Please try again.',
+          description:
+            result.error || 'Failed to send reset email. Please try again.',
           variant: 'destructive',
         });
       }
@@ -52,7 +59,7 @@ export default function ForgotPasswordPage() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-blue-950/30 dark:to-purple-950/30">
         <Header />
-        
+
         <main className="container mx-auto px-4 py-8">
           <div className="max-w-md mx-auto">
             <Card className="shadow-xl border-2 border-white/20 dark:border-slate-700/50 bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-900/90 dark:to-slate-800/70 backdrop-blur-xl">
@@ -62,17 +69,18 @@ export default function ForgotPasswordPage() {
                     <CheckCircle className="w-12 h-12 text-green-600 dark:text-green-400" />
                   </div>
                 </div>
-                
+
                 <h1 className="text-2xl font-bold mb-4">
                   <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
                     Check Your Email
                   </span>
                 </h1>
-                
+
                 <p className="text-slate-600 dark:text-slate-300 mb-6">
-                  We&apos;ve sent password reset instructions to <strong>{email}</strong>
+                  We&apos;ve sent password reset instructions to{' '}
+                  <strong>{email}</strong>
                 </p>
-                
+
                 <div className="space-y-4">
                   <Button
                     onClick={() => setEmailSent(false)}
@@ -81,7 +89,7 @@ export default function ForgotPasswordPage() {
                   >
                     Send Another Email
                   </Button>
-                  
+
                   <Link href="/auth/login">
                     <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white">
                       <ArrowLeft className="w-4 h-4 mr-2" />
@@ -100,7 +108,7 @@ export default function ForgotPasswordPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-blue-950/30 dark:to-purple-950/30">
       <Header />
-      
+
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-md mx-auto">
           <div className="text-center mb-8">
@@ -121,7 +129,9 @@ export default function ForgotPasswordPage() {
 
           <Card className="shadow-xl border-2 border-white/20 dark:border-slate-700/50 bg-gradient-to-br from-white/90 to-white/70 dark:from-slate-900/90 dark:to-slate-800/70 backdrop-blur-xl">
             <CardHeader>
-              <CardTitle className="text-center text-xl">Reset Password</CardTitle>
+              <CardTitle className="text-center text-xl">
+                Reset Password
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -131,7 +141,7 @@ export default function ForgotPasswordPage() {
                     id="email"
                     type="email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={e => setEmail(e.target.value)}
                     placeholder="Enter your email address"
                     required
                     className="bg-white/50 dark:bg-slate-800/50"

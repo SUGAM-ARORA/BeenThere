@@ -27,7 +27,7 @@ export interface DatabaseInsight {
 let insights: DatabaseInsight[] = [
   {
     id: '1',
-    title: 'Mastering System Design Interviews: A Senior Engineer\'s Guide',
+    title: "Mastering System Design Interviews: A Senior Engineer's Guide",
     content: `After conducting 200+ system design interviews at top tech companies, here's what separates great candidates from good ones:
 
 **Start with Requirements Clarification**
@@ -52,23 +52,29 @@ Reference actual technologies and patterns you've used. Mention specific databas
       role: 'Principal Engineer',
       company: 'Google',
       batch: '2016',
-      avatar: '👨‍💻'
+      avatar: '👨‍💻',
     },
     category: 'Interview Prep',
-    tags: ['System Design', 'Technical Interviews', 'Architecture', 'Scalability', 'Google'],
+    tags: [
+      'System Design',
+      'Technical Interviews',
+      'Architecture',
+      'Scalability',
+      'Google',
+    ],
     keyTakeaways: [
       'Always start with requirements clarification before designing',
       'Think in layers and scale gradually from simple to complex',
       'Know performance numbers and discuss trade-offs explicitly',
       'Reference real technologies and show practical experience',
-      'Structure your approach and communicate clearly throughout'
+      'Structure your approach and communicate clearly throughout',
     ],
     readTime: '8 min read',
     likes: 342,
     views: 1250,
     publishedAt: '2024-01-20T10:00:00Z',
     isVerified: true,
-    status: 'published'
+    status: 'published',
   },
   {
     id: '2',
@@ -97,28 +103,35 @@ Join product management meetups, online communities, and conferences. Connect wi
       role: 'Senior Product Manager',
       company: 'Microsoft',
       batch: '2018',
-      avatar: '👩‍💼'
+      avatar: '👩‍💼',
     },
     category: 'Career Growth',
-    tags: ['Product Management', 'Career Transition', 'Business Skills', 'Cross-functional', 'Microsoft'],
+    tags: [
+      'Product Management',
+      'Career Transition',
+      'Business Skills',
+      'Cross-functional',
+      'Microsoft',
+    ],
     keyTakeaways: [
       'Technical background is valuable for product management roles',
       'Develop business acumen through courses and reading',
       'Practice product thinking by analyzing everyday products',
       'Build relationships across different functions and teams',
       'Create a portfolio showcasing product-related work',
-      'Network actively in product management communities'
+      'Network actively in product management communities',
     ],
     readTime: '6 min read',
     likes: 189,
     views: 890,
     publishedAt: '2024-01-18T14:30:00Z',
     isVerified: true,
-    status: 'published'
+    status: 'published',
   },
   {
     id: '3',
-    title: 'The Art of Learning New Technologies: A Framework for Continuous Growth',
+    title:
+      'The Art of Learning New Technologies: A Framework for Continuous Growth',
     content: `In 8 years of software development, I've learned dozens of technologies. Here's my proven framework for mastering new tech quickly:
 
 **The 20-80 Rule**
@@ -143,25 +156,31 @@ Define specific, measurable goals: "Build a REST API with authentication" rather
       role: 'Tech Lead',
       company: 'Amazon',
       batch: '2017',
-      avatar: '🧑‍🔬'
+      avatar: '🧑‍🔬',
     },
     category: 'Skill Development',
-    tags: ['Learning', 'Technology', 'Continuous Growth', 'Self-improvement', 'Amazon'],
+    tags: [
+      'Learning',
+      'Technology',
+      'Continuous Growth',
+      'Self-improvement',
+      'Amazon',
+    ],
     keyTakeaways: [
       'Focus on 20% of features that provide 80% of capability',
       'Build real projects while learning new technologies',
       'Teach others to solidify your own understanding',
       'Connect new concepts to existing knowledge',
       'Engage with technology communities for support',
-      'Set specific, measurable learning goals'
+      'Set specific, measurable learning goals',
     ],
     readTime: '5 min read',
     likes: 267,
     views: 1100,
     publishedAt: '2024-01-15T09:15:00Z',
     isVerified: true,
-    status: 'published'
-  }
+    status: 'published',
+  },
 ];
 
 // Database operations
@@ -182,16 +201,29 @@ export const insightsDB = {
   },
 
   getInsightsStatsSync: () => {
-    const publishedInsights = insights.filter(insight => insight.status === 'published');
+    const publishedInsights = insights.filter(
+      insight => insight.status === 'published'
+    );
     return {
       totalInsights: publishedInsights.length,
-      totalViews: publishedInsights.reduce((sum, insight) => sum + insight.views, 0),
-      totalLikes: publishedInsights.reduce((sum, insight) => sum + insight.likes, 0),
-      totalAuthors: new Set(publishedInsights.map(insight => insight.author.name)).size,
-      categoryCounts: publishedInsights.reduce((acc, insight) => {
-        acc[insight.category] = (acc[insight.category] || 0) + 1;
-        return acc;
-      }, {} as Record<string, number>)
+      totalViews: publishedInsights.reduce(
+        (sum, insight) => sum + insight.views,
+        0
+      ),
+      totalLikes: publishedInsights.reduce(
+        (sum, insight) => sum + insight.likes,
+        0
+      ),
+      totalAuthors: new Set(
+        publishedInsights.map(insight => insight.author.name)
+      ).size,
+      categoryCounts: publishedInsights.reduce(
+        (acc, insight) => {
+          acc[insight.category] = (acc[insight.category] || 0) + 1;
+          return acc;
+        },
+        {} as Record<string, number>
+      ),
     };
   },
 
@@ -201,13 +233,15 @@ export const insightsDB = {
     return insights.filter(insight => insight.status === 'published');
   },
 
-  getInsightsByCategory: async (category: string): Promise<DatabaseInsight[]> => {
+  getInsightsByCategory: async (
+    category: string
+  ): Promise<DatabaseInsight[]> => {
     await new Promise(resolve => setTimeout(resolve, 100));
     if (category === 'all') {
       return insights.filter(insight => insight.status === 'published');
     }
-    return insights.filter(insight => 
-      insight.status === 'published' && insight.category === category
+    return insights.filter(
+      insight => insight.status === 'published' && insight.category === category
     );
   },
 
@@ -224,14 +258,16 @@ export const insightsDB = {
   searchInsights: async (query: string): Promise<DatabaseInsight[]> => {
     await new Promise(resolve => setTimeout(resolve, 100));
     const lowercaseQuery = query.toLowerCase();
-    return insights.filter(insight => 
-      insight.status === 'published' && (
-        insight.title.toLowerCase().includes(lowercaseQuery) ||
-        insight.content.toLowerCase().includes(lowercaseQuery) ||
-        insight.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery)) ||
-        insight.author.name.toLowerCase().includes(lowercaseQuery) ||
-        insight.author.company.toLowerCase().includes(lowercaseQuery)
-      )
+    return insights.filter(
+      insight =>
+        insight.status === 'published' &&
+        (insight.title.toLowerCase().includes(lowercaseQuery) ||
+          insight.content.toLowerCase().includes(lowercaseQuery) ||
+          insight.tags.some(tag =>
+            tag.toLowerCase().includes(lowercaseQuery)
+          ) ||
+          insight.author.name.toLowerCase().includes(lowercaseQuery) ||
+          insight.author.company.toLowerCase().includes(lowercaseQuery))
     );
   },
 
@@ -245,7 +281,9 @@ export const insightsDB = {
     return false;
   },
 
-  createInsight: async (insightData: Omit<DatabaseInsight, 'id' | 'likes' | 'views' | 'publishedAt'>): Promise<DatabaseInsight> => {
+  createInsight: async (
+    insightData: Omit<DatabaseInsight, 'id' | 'likes' | 'views' | 'publishedAt'>
+  ): Promise<DatabaseInsight> => {
     await new Promise(resolve => setTimeout(resolve, 200));
     const newInsight: DatabaseInsight = {
       ...insightData,
@@ -260,16 +298,29 @@ export const insightsDB = {
 
   getInsightsStats: async () => {
     await new Promise(resolve => setTimeout(resolve, 50));
-    const publishedInsights = insights.filter(insight => insight.status === 'published');
+    const publishedInsights = insights.filter(
+      insight => insight.status === 'published'
+    );
     return {
       totalInsights: publishedInsights.length,
-      totalViews: publishedInsights.reduce((sum, insight) => sum + insight.views, 0),
-      totalLikes: publishedInsights.reduce((sum, insight) => sum + insight.likes, 0),
-      totalAuthors: new Set(publishedInsights.map(insight => insight.author.name)).size,
-      categoryCounts: publishedInsights.reduce((acc, insight) => {
-        acc[insight.category] = (acc[insight.category] || 0) + 1;
-        return acc;
-      }, {} as Record<string, number>)
+      totalViews: publishedInsights.reduce(
+        (sum, insight) => sum + insight.views,
+        0
+      ),
+      totalLikes: publishedInsights.reduce(
+        (sum, insight) => sum + insight.likes,
+        0
+      ),
+      totalAuthors: new Set(
+        publishedInsights.map(insight => insight.author.name)
+      ).size,
+      categoryCounts: publishedInsights.reduce(
+        (acc, insight) => {
+          acc[insight.category] = (acc[insight.category] || 0) + 1;
+          return acc;
+        },
+        {} as Record<string, number>
+      ),
     };
-  }
+  },
 };
